@@ -6,6 +6,7 @@
 		db = module.parent.require('../src/database'),
 		passport = module.parent.require('passport'),
 		passportFacebook = require('passport-facebook').Strategy,
+		shortId = require('shortid'),
 		fs = module.parent.require('fs'),
 		path = module.parent.require('path'),
 		nconf = module.parent.require('nconf'),
@@ -73,6 +74,9 @@
 			} else {
 				// New User
 				var success = function(uid) {
+					// Set fullname to the handle
+					User.setUserField(uid, 'fullname', name);
+
 					// Save facebook-specific information to the user
 					user.setUserField(uid, 'fbid', fbid);
 					db.setObjectField('fbid:uid', fbid, uid);
@@ -94,7 +98,7 @@
 					}
 
 					if (!uid) {
-						user.create({username: name, email: email}, function(err, uid) {
+						user.create({username: shortId.generate(), email: email}, function(err, uid) {
 							if(err) {
 								return callback(err);
 							}
