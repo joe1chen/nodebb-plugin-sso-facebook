@@ -75,7 +75,7 @@
 				// New User
 				var success = function(uid) {
 					// Set fullname to the handle
-					User.setUserField(uid, 'fullname', name);
+					user.setUserField(uid, 'fullname', name);
 
 					// Save facebook-specific information to the user
 					user.setUserField(uid, 'fbid', fbid);
