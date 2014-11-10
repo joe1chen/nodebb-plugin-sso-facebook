@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-sso-facebook",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "NodeBB Facebook SSO",
   "main": "library.js",
   "repository": {
@@ -28,5 +28,8 @@
   "dependencies": {
     "passport-facebook": "~1.0.2",
     "shortid": "^2.1.2"
+  },
+  "nbbpm": {
+    "compatibility": "^0.6.0"
   }
 }
